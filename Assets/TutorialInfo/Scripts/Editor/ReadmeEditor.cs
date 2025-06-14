@@ -68,10 +68,17 @@ public class ReadmeEditor : Editor
 
     static void LoadLayout()
     {
+        var layoutPath = Path.Combine(Application.dataPath, "TutorialInfo/Layout.wlt");
+        if (!File.Exists(layoutPath))
+        {
+            Debug.LogWarning($"Layout file not found at {layoutPath}. Skipping window layout load.");
+            return;
+        }
+
         var assembly = typeof(EditorApplication).Assembly;
         var windowLayoutType = assembly.GetType("UnityEditor.WindowLayout", true);
         var method = windowLayoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static);
-        method.Invoke(null, new object[] { Path.Combine(Application.dataPath, "TutorialInfo/Layout.wlt"), false });
+        method.Invoke(null, new object[] { layoutPath, false });
     }
 
     static Readme SelectReadme()
