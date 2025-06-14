@@ -1,67 +1,52 @@
 # PassNDash
 
-Pass ‘n’ Dash is a fast-paced, 2-player co-op action game where players must work together to pass a ball, dodge obstacles, and outlast relentless chasers in a chaotic, enclosed arena.
+Pass ‘n’ Dash is a fast-paced 2-player co-op action game where players work together to pass a ball, dodge obstacles, and outlast relentless chasers in a chaotic arena.
 
-🧠 Concept Overview
-Genre: 2D Co-op Action / Arena Dodge Game
+## Concept Overview
 
-Players: 2 (local co-op)
+|                | Details                                |
+| -------------- | -------------------------------------- |
+| **Genre**      | 2D Co-op Action / Arena Dodge Game     |
+| **Players**    | 2 (local co-op)                        |
+| **Engine**     | Unity                                  |
+| **Perspective**| Top-down or 2D side view               |
 
-Engine: Unity
+## Gameplay Summary
 
-Perspective: Top-down or 2D side view (depending on your final design)
+Two players are placed on opposite sides of a divided field separated by a fence. They must collaborate under pressure, passing a ball back and forth while avoiding AI-controlled animals (like dogs) that chase the ball holder. If a dog catches the ball, the team loses. Survive long enough for all chasing animals to run out of stamina to win.
 
-🕹️ Gameplay Summary
-Two players are placed on opposite sides of a divided field, separated by a fence or barrier. They must collaborate under pressure, passing a ball back and forth while avoiding AI-controlled animals (like dogs) that chase the ball holder.
+## Key Features
 
-If a dog catches the ball, the team loses.
+- **Split Field Co-op** – players pass across a central barrier.
+- **Chasing Enemies** – AI animals pursue the ball, not the players.
+- **Physics-Based Movement** – players and the ball bounce off walls.
+- **Obstacle-Filled Arenas** – each level adds new obstacles.
+- **Stamina Mechanics** – enemies have stamina meters you must exhaust.
+- **Progressive Difficulty** with:
+  - More or different obstacles
+  - Faster or smarter enemies
+  - Higher stamina values
+  - New hazards
 
-The goal is to survive long enough for all chasing animals to run out of stamina.
+## Chaos Mode
 
-⚽ Key Features
-🔁 Split Field Co-op – Players are separated and must pass across a central barrier.
+Unlocked after Level 10:
 
-🐕 Chasing Enemies – AI animals pursue the ball, not the players.
+- Multiple enemies
+- Randomized hazards
+- Power-ups and modifiers
+- Optional **INF BALLS** mode for absurd fun
 
-🧱 Physics-Based Movement – Players and the ball use realistic physics; the ball bounces off walls.
+## Development Structure
 
-💡 Obstacle-Filled Arenas – Each level adds more obstacles to create complexity.
+- Unity (C#)
+- Git for version control
+- GitHub for remote hosting
+- Project follows PascalCase naming convention
 
-🔋 Stamina Mechanics – Enemies have stamina meters. Exhaust them to win.
+## Folder Structure (Assets)
 
-📈 Progressive Difficulty – Levels increase in difficulty with:
-
-More/different obstacles
-
-More/faster/more intelligent enemies
-
-Higher stamina values
-
-New hazards
-
-🌪️ Chaos Mode
-After Level 10, a special Chaos Mode unlocks:
-
-Multiple enemies
-
-Randomized hazards
-
-Power-ups and modifiers
-
-Optional INF BALLS mode for absurd fun
-
-🧪 Development Structure
-✔️ Unity (C#)
-
-✔️ Git for version control
-
-✔️ GitHub for remote hosting
-
-✔️ Project follows PascalCase naming convention
-
-📁 Folder Structure (Assets)
-mathematica
-Copy
+```text
 Assets/
 ├── Art/
 ├── Audio/
@@ -73,18 +58,18 @@ Assets/
 │   ├── Ball/
 │   ├── AI/
 │   ├── Managers/
-│   ├── UI/
+│   └── UI/
 ├── Animations/
 ├── Fonts/
-├── Resources/
-🔧 Version Control Notes
-Git used for local and remote version control.
+└── Resources/
+```
 
-Remote repo connected via GitHub.
+## Version Control Notes
 
-Branching strategy encouraged (e.g., feature/player-movement, bugfix/ball-stuck).
-
-Unity .gitignore in use to ignore unnecessary files.
+- Git used for local and remote version control.
+- Remote repo connected via GitHub.
+- Branching strategy encouraged (e.g., `feature/player-movement`, `bugfix/ball-stuck`).
+- Unity `.gitignore` in use to ignore unnecessary files.
 
 ## Building and Running
 
