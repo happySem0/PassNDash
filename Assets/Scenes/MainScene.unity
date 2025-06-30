@@ -468,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teammate: {fileID: 1998208443}
   ball: {fileID: 8005910795675098654}
-  passKey: 32
+  passAction: {fileID: 946292021946847685, guid: 60deb53e7eca6d14c93f7933850aeb40, type: 3}
   passForce: 10
 --- !u!114 &708771128
 MonoBehaviour:
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teammate: {fileID: 708771123}
   ball: {fileID: 8005910795675098654}
-  passKey: 305
+  passAction: {fileID: 4370931084489067364, guid: 60deb53e7eca6d14c93f7933850aeb40, type: 3}
   passForce: 10
 --- !u!114 &1998208450
 MonoBehaviour:
@@ -1411,7 +1411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703e75e288186c44d988ea49f9c5323f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carryOffset: {x: 0, y: 1, z: 0.5}
 --- !u!114 &8005910795675098655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,7 +1442,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.7
+  m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
