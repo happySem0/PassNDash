@@ -54,6 +54,14 @@ public class BallPasser : MonoBehaviour
     }
 
     /// <summary>
+    /// Returns true if this player currently has the ball.
+    /// </summary>
+    public bool HasBall()
+    {
+        return hasBall;
+    }
+
+    /// <summary>
     /// Unity method called when the script is enabled.
     /// Enables the input action for passing.
     /// </summary>
