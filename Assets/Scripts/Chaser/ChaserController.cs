@@ -47,8 +47,18 @@ public class ChaserController : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // Check if the ball is inside this chaser's area using the bounds of the assigned collider.
-        if (areaBounds.bounds.Contains(ball.transform.position))
+        // Check if the ball is inside this chaser's area using only the X and Z (horizontal) position.
+        // This ignores the Y (vertical) position, so the ball can be high in the air and still be considered "in area".
+        Vector3 ballPos = ball.transform.position;
+        Bounds bounds = areaBounds.bounds;
+
+        // Create a new Vector3 for the ball's horizontal position, using the area's Y center.
+        Vector3 ballHorizontal = new Vector3(ballPos.x, bounds.center.y, ballPos.z);
+
+        // Check if the horizontal position is within the area's bounds.
+        bool ballInArea = bounds.Contains(ballHorizontal);
+
+        if (ballInArea)
         {
             // Ball is in the area: chase it.
             isWandering = false;
