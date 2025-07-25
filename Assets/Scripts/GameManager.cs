@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem; // Import the new Input System namespace
 
 /// <summary>
 /// GameManager is responsible for handling overall game state, such as game over and restarting the game.
@@ -34,12 +35,13 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Unity's Update method is called once per frame.
     /// Here, we check if the user presses the Delete key to restart the game.
+    /// This version uses the new Unity Input System, which is required if you have switched to it in Player Settings.
     /// </summary>
     private void Update()
     {
-        // Input.GetKeyDown checks if the Delete key was pressed this frame.
-        // KeyCode.Delete refers to the Delete key on the keyboard.
-        if (Input.GetKeyDown(KeyCode.Delete))
+        // Keyboard.current is part of the new Input System.
+        // We check if the Delete key was pressed this frame.
+        if (Keyboard.current != null && Keyboard.current.deleteKey.wasPressedThisFrame)
         {
             // Call the RestartGame method to restart the game.
             RestartGame();
