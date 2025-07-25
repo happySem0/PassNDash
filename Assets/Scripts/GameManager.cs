@@ -32,6 +32,21 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Unity's Update method is called once per frame.
+    /// Here, we check if the user presses the Delete key to restart the game.
+    /// </summary>
+    private void Update()
+    {
+        // Input.GetKeyDown checks if the Delete key was pressed this frame.
+        // KeyCode.Delete refers to the Delete key on the keyboard.
+        if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            // Call the RestartGame method to restart the game.
+            RestartGame();
+        }
+    }
+
+    /// <summary>
     /// Called to trigger the game over state.
     /// This method can be called from other scripts (e.g., ChaserController).
     /// </summary>
