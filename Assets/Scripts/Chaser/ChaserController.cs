@@ -1,10 +1,9 @@
 using UnityEngine;
 
 /// <summary>
-/// Controls the behavior of a chaser GameObject.
-/// The chaser stays within its assigned area, chases the ball if the ball is in that area,
-/// and wanders randomly if the ball is not in the area. If the chaser collides with the ball
-/// or the player holding the ball, the game ends.
+/// This MonoBehaviour script should be attached to the Chaser GameObject in Unity.
+/// It acts as a bridge between Unity's event system and the core Chaser logic.
+/// Exposes stamina settings to the Unity Inspector for easy tweaking.
 /// </summary>
 public class ChaserController : MonoBehaviour
 {
@@ -20,26 +19,37 @@ public class ChaserController : MonoBehaviour
     [Tooltip("Speed at which the chaser moves when chasing or wandering.")]
     public float chaseSpeed = 5f;
 
-    // The Chaser logic class instance
-    private Chaser chaser;
+    [Header("Chaser Stamina Settings")]
+    [Tooltip("Maximum stamina value the chaser can have.")]
+    public float maxStamina = 100f;
 
-    // Cached reference to the GameManager singleton for triggering game over.
-    private GameManager gameManager;
+    [Tooltip("Amount of stamina lost per second while chasing.")]
+    public float staminaDrainPerSecond = 1f;
+
+    private Chaser chaser; // Instance of the core logic class
+    private GameManager gameManager; // Reference to the GameManager singleton
 
     /// <summary>
     /// Unity's Start method is called before the first frame update.
-    /// Here, we cache the GameManager instance and initialize the Chaser logic class.
+    /// Here, we cache the GameManager instance and initialize the Chaser logic class,
+    /// passing in the stamina settings from the Inspector.
     /// </summary>
     private void Start()
     {
         gameManager = GameManager.Instance;
-        // Initialize the Chaser logic class with references and parameters.
-        chaser = new Chaser(ball, player, areaBounds, chaseSpeed);
+
+        // Create the Chaser logic instance and set stamina properties from Inspector
+        chaser = new Chaser(ball, player, areaBounds, chaseSpeed)
+        {
+            MaxStamina = maxStamina,
+            StaminaDrainPerSecond = staminaDrainPerSecond,
+            Stamina = maxStamina // Start with full stamina
+        };
     }
 
     /// <summary>
     /// Unity's Update method is called once per frame.
-    /// Delegates the chaser's movement logic to the Chaser class.
+    /// Delegates the chaser's movement and stamina logic to the Chaser class.
     /// </summary>
     private void Update()
     {
@@ -65,5 +75,20 @@ public class ChaserController : MonoBehaviour
                 gameManager.GameOver("Chaser caught the player with the ball!");
             }
         }
+    }
+
+    /// <summary>
+    /// Returns the current stamina value of the chaser.
+    /// This method allows UI scripts to access the chaser's stamina in a safe and encapsulated way,
+    /// without exposing the internal Chaser logic class directly.
+    /// </summary>
+    /// <returns>
+    /// The current stamina value as a float. If the chaser logic is not initialized, returns 0.
+    /// </returns>
+    public float GetCurrentStamina()
+    {
+        // Check if the chaser logic instance exists before accessing its stamina value.
+        // This prevents null reference errors if the chaser is not yet initialized.
+        return chaser != null ? chaser.Stamina : 0f;
     }
 }
